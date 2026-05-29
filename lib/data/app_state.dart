@@ -35,8 +35,11 @@ class AppState {
     final events = await _store.readAll();
     if (events.isEmpty) {
       await _seedDefaultCategories();
+      final seededEvents = await _store.readAll();
+      _replay(seededEvents);
+    } else {
+      _replay(events);
     }
-    _replay(events);
   }
 
   Future<void> _seedDefaultCategories() async {

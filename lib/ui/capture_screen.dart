@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
 
 import '../data/app_state.dart';
@@ -176,7 +177,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
               OutlinedButton.icon(
                 onPressed: _pickPdf,
                 icon: const Icon(Icons.attach_file),
-                label: Text(_pdfPath == null ? 'PDF anhängen' : 'PDF: ${_pdfPath!.split('/').last}'),
+                label: Text(_pdfPath == null ? 'PDF anhängen' : 'PDF: ${p.basename(_pdfPath!)}'),
               ),
               const SizedBox(height: 24),
               SizedBox(
